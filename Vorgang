@@ -1,0 +1,12 @@
+Anlegen der main Klasse
+    Spiel starten stoppen & updaten
+GameFrame ist das Fenster in dem das Spiel stattfindet
+    Anzeigen des Fensters
+    Anzeigen des Spielfeldes
+    Anzeigen des Labels
+GameLabel ist das was angezeigt wird
+    Zeigt das eigentliche Spiel an
+
+Fenster erstellt :D
+
+
