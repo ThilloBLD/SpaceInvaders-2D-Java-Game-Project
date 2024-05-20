@@ -28,7 +28,7 @@ public class Game {
 
     private void init() {
         ResourceManager loadTextures = ResourceManager.getInstance() ;
-        player = new Player(375, 400, 100, 1, loadTextures.getTexture(TextureType.penis));
+        player = new Player(375, 400, 100, 1, loadTextures.getTexture(TextureType.player));
     }
 
     public synchronized void update() {

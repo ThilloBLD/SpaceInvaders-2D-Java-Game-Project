@@ -9,4 +9,17 @@ GameLabel ist das was angezeigt wird
 
 Fenster erstellt :D
 
+TODO:
 
+Gegner
+    Movement
+    Shoot
+    Die
+    Spawn
+
+Collision
+
+GameEnding
+
+Menu for Themes and Background
+    Textureswitch after choosing theme
