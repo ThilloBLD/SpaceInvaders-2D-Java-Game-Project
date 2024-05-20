@@ -17,7 +17,6 @@ public class Game {
     private ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<Bullet> removeBullets = new ArrayList<>();
 
-
     private InputHandler inputHandler;
 
     public Game(InputHandler inputHandler) {
@@ -43,8 +42,8 @@ public class Game {
         for (Enemy enemy : enemies) {
             enemy.update(this);
         }
-
     }
+
     // Alles was gezeichnet wird
     public synchronized void draw(Graphics g) {
         for (Bullet bullet : bullets) {
@@ -71,17 +70,21 @@ public class Game {
     public void addBullet(Bullet bullet) {
         bullets.add(bullet);
     }
+
     public void removeBullet(Bullet bullet) {
         removeBullets.add(bullet);
     }
+
     public ArrayList<Bullet> getBullets() {
         return bullets;
     }
+
     private void checkGameEnding() {
         if (enemies.isEmpty()) {
             SpaceInvaders.instance.running = false;
         }
     }
+
     public static Texture getBulletTexture() {
         Texture t = new Texture(5, 5);
         t.setColor(Color.BLUE);

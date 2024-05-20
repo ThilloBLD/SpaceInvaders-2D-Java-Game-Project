@@ -6,30 +6,25 @@ public abstract class LivingEntity extends Entity{
     private double health;
     private boolean alive;
 
-    public LivingEntity(double x, double y, double health, double speed, Texture texture)
-    {
+    public LivingEntity(double x, double y, double health, double speed, Texture texture) {
         super(x, y, speed, texture);
         this.health = health;
         alive = true;
     }
 
-    public double getHealth()
-    {
+    public double getHealth() {
         return health;
     }
 
-    public boolean isAlive()
-    {
+    public boolean isAlive() {
         return alive;
     }
 
-    public boolean isDead()
-    {
+    public boolean isDead() {
         return !alive;
     }
 
-    public void damage(double damage)
-    {
+    public void damage(double damage) {
         health -= damage;
         if (health <= 0)
         {

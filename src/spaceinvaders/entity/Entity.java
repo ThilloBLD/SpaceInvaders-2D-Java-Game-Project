@@ -16,7 +16,6 @@ public abstract class Entity {
         this.y = y;
         this.speed = speed;
         this.texture = texture;
-
     }
 
     public double getX() {
@@ -39,20 +38,26 @@ public abstract class Entity {
     public double getSpeed() {
         return speed;
     }
+
     public void setX(double x) {
         this.x = x;
     }
+
     public void setY(double y) {
         this.y = y;
     }
+
     public void draw(Graphics g) {
         // Draw the entity
         g.drawImage(texture.getBufferedImage(), (int)x, (int)y, texture.getWidth(), texture.getHeight(), null);
     }
+
     public abstract void update(Game game);
+
     public int getWidth() {
         return texture.getWidth();
     }
+
     public int getHeight() {
         return texture.getHeight();
     }

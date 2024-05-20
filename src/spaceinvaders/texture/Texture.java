@@ -13,9 +13,7 @@ public class Texture {
     }
 
     public Texture(int width, int height) {
-
         this(new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB));
-
     }
 
     public BufferedImage getBufferedImage() {
@@ -29,10 +27,12 @@ public class Texture {
     public int getHeight() {
         return img.getHeight();
     }
+
     public int[] getPixels() {
         // Permanently returns the pixels of the image
         return ((DataBufferInt)this.img.getRaster().getDataBuffer()).getData();
     }
+
     public void setColor(Color c) {
         // Set the color of the image
         int[] pixels = getPixels();
@@ -40,4 +40,5 @@ public class Texture {
             pixels[i] = c.getRGB();
         }
     }
+
 }

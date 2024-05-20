@@ -5,6 +5,7 @@ import spaceinvaders.handler.InputHandler;
 import javax.swing.JFrame;
 
 public class GameFrame extends JFrame {
+
     private int width;
     private int height;
     private GameLabel label;
@@ -16,12 +17,13 @@ public class GameFrame extends JFrame {
         init();
         initFrame();
     }
+
     private void init() {
         // Initialisierung des InputHandlers
         inputHandler = new InputHandler();
         label = new GameLabel(inputHandler);
-
     }
+
     private void initFrame() {
         //Setzen der Eigenschaften des Frames
         setName("Space Invaders");
@@ -31,6 +33,7 @@ public class GameFrame extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         addKeyListener(inputHandler);
+        addWindowListener(inputHandler);
         add(label);
         setVisible(true);
     }
@@ -39,10 +42,13 @@ public class GameFrame extends JFrame {
         // Weitergabe der Aktualisierung an das Label
         label.update();
     }
+
     public int getLabelWidth() {
         return label.getWidth();
     }
+
     public int getLabelHeight() {
         return label.getHeight();
     }
+
 }

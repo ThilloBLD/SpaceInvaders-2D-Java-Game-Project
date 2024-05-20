@@ -38,9 +38,11 @@ public class Bullet extends Entity{
             move(0, getSpeed());
         }
     }
+
     public int getDamage() {
         return damage;
     }
+
     public void registerHit() {
         if (!hit) {
             hit = true;

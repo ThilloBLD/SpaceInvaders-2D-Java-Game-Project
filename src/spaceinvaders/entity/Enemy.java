@@ -8,7 +8,6 @@ public class Enemy extends LivingEntity {
 
     public Enemy(double x, double y, double health, double speed, Texture texture) {
         super(x, y, health, speed, texture);
-
     }
 
     @Override

@@ -1,15 +1,15 @@
 package spaceinvaders.gui;
 
 import javax.swing.JLabel;
-import java.awt.*;
+import java.awt.Graphics;
 import spaceinvaders.game.Game;
 import spaceinvaders.handler.InputHandler;
 
-public class GameLabel extends JLabel{
+public class GameLabel extends JLabel {
+
     private Game game;
 
     public GameLabel(InputHandler inputHandler) {
-
         init(inputHandler);
     }
 
@@ -18,9 +18,7 @@ public class GameLabel extends JLabel{
     }
 
     private void init(InputHandler inputHandler) {
-
         game = new Game(inputHandler);
-
     }
 
     @Override

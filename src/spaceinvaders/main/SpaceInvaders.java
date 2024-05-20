@@ -11,7 +11,6 @@ public final class SpaceInvaders {
     public static SpaceInvaders instance;
     public GameFrame frame;
 
-
     public SpaceInvaders() {
         // Setzen der Instanz
         instance = this;
@@ -47,7 +46,6 @@ public final class SpaceInvaders {
     private void stopGame() {
         System.exit(0);
     }
-
 
     public static void main(String[] args) {
 

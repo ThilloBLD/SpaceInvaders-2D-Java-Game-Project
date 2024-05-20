@@ -9,14 +9,15 @@ public class Player extends LivingEntity {
     public Player(double x, double y, double health, double speed, Texture texture) {
         super(x, y, health, speed, texture);
     }
+
     public void moveLeft() {
         double newX = getX() - getSpeed();
         if (newX < 0) {
             newX = 0;
         }
         setX(newX);
-
     }
+
     public void moveRight(int mapWidth) {
         double newX = getX() + getSpeed();
         if((newX + getWidth()) > mapWidth) {
@@ -37,6 +38,4 @@ public class Player extends LivingEntity {
             game.addBullet(new Bullet(getX() + getWidth() / 2, getY(), 1, Game.getBulletTexture(), true));
         }
     }
-
-
 }

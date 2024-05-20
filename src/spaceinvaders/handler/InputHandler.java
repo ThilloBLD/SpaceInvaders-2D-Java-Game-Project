@@ -33,7 +33,6 @@ public class InputHandler implements KeyListener, WindowListener {
             if (keyCode >= 0 && keyCode < keys.length) {
                 keys[keyCode] = false;
             }
-
         }
 
     @Override
