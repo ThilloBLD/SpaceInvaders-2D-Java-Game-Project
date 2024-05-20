@@ -6,8 +6,13 @@ import java.awt.event.KeyEvent;
 
 public class Player extends LivingEntity {
 
+    //Wann du das nächste Mal schießen darfst
+    private long allowedShoot;
+    public static final long shootDelay = 750;
+
     public Player(double x, double y, double health, double speed, Texture texture) {
         super(x, y, health, speed, texture);
+        allowedShoot = 0;
     }
 
     public void moveLeft() {
@@ -35,7 +40,14 @@ public class Player extends LivingEntity {
             moveLeft();
         }
         if (game.isKeyPressed(KeyEvent.VK_SPACE)) {
+            shootBullet(game);
+        }
+    }
+
+    private void shootBullet(Game game) {
+        if (System.currentTimeMillis() >= allowedShoot) {
             game.addBullet(new Bullet(getX() + getWidth() / 2, getY(), 1, Game.getBulletTexture(), true));
+            allowedShoot = System.currentTimeMillis() + shootDelay;
         }
     }
 }

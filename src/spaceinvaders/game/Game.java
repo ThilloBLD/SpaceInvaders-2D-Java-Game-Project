@@ -10,6 +10,8 @@ import spaceinvaders.texture.Texture;
 
 import java.awt.*;
 import java.util.ArrayList;
+import spaceinvaders.texture.ResourceManager;
+import spaceinvaders.texture.TextureType;
 
 public class Game {
     private Player player;
@@ -25,9 +27,8 @@ public class Game {
     }
 
     private void init() {
-        Texture texture = new Texture(20, 20);
-        texture.setColor(java.awt.Color.RED);
-        player = new Player(375, 400, 100, 1, texture);
+        ResourceManager loadTextures = ResourceManager.getInstance() ;
+        player = new Player(375, 400, 100, 1, loadTextures.getTexture(TextureType.penis));
     }
 
     public synchronized void update() {
@@ -86,8 +87,7 @@ public class Game {
     }
 
     public static Texture getBulletTexture() {
-        Texture t = new Texture(5, 5);
-        t.setColor(Color.BLUE);
-        return t;
+        ResourceManager loadTextures = ResourceManager.getInstance() ;
+        return loadTextures.getTexture(TextureType.bullet);
     }
 }

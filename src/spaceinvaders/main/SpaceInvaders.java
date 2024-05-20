@@ -1,7 +1,7 @@
 package spaceinvaders.main;
 
 import spaceinvaders.gui.GameFrame;
-import spaceinvaders.texture.Texture;
+
 
 public final class SpaceInvaders {
 
