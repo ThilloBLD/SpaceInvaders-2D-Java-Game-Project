@@ -23,7 +23,7 @@ public final class SpaceInvaders {
     }
 
     private void initGame() {
-        frame = new GameFrame(800, 600);
+        frame = new GameFrame(800, 550);
         // Hier kommt die Initialisierung hin
         running = true;
     }

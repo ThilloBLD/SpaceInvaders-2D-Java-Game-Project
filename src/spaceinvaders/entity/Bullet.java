@@ -13,7 +13,7 @@ public class Bullet extends Entity{
     public Bullet(double x, double y, double speed, boolean moveUp) {
         // schaut, ob die Textur nach oben oder nach Unten geschossen werden soll -> ? + : ist eine if abfrage 
         super(x, y, speed, ResourceManager.getInstance().getTexture(moveUp ? TextureType.bullet : TextureType.reversedBullet));
-        damage = Game.gamerandomizer.nextInt(15) + 1;
+        damage = Game.gameRandomizer.nextInt(15) + 1;
         this.moveUp = moveUp;
     }
 
@@ -46,5 +46,9 @@ public class Bullet extends Entity{
         if (!hit) {
             hit = true;
         }
+    }
+
+    public boolean isMovingUp() {
+        return moveUp;
     }
 }

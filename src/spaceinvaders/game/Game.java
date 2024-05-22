@@ -7,7 +7,7 @@ import spaceinvaders.handler.InputHandler;
 import spaceinvaders.main.SpaceInvaders;
 import spaceinvaders.texture.Texture;
 
-import java.awt.*;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import spaceinvaders.texture.ResourceManager;
 import spaceinvaders.texture.TextureType;
@@ -18,9 +18,9 @@ public class Game {
     private ArrayList<Enemy> enemies = new ArrayList<>();
     private ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<Bullet> removeBullets = new ArrayList<>();
-    private ArrayList<Enemy> removEnemies = new ArrayList<>();
+    private ArrayList<Enemy> removeEnemies = new ArrayList<>();
 
-    public static final Random gamerandomizer = new Random();
+    public static final Random gameRandomizer = new Random();
 
     private InputHandler inputHandler;
 
@@ -48,9 +48,9 @@ public class Game {
             enemy.update(this);
    
         }
-        if(!removEnemies.isEmpty()) {
-            enemies.removeAll(removEnemies);
-            removEnemies.clear();
+        if(!removeEnemies.isEmpty()) {
+            enemies.removeAll(removeEnemies);
+            removeEnemies.clear();
         }
 
         checkGameEnding();
@@ -87,8 +87,8 @@ public class Game {
         removeBullets.add(bullet);
     }
 
-    public void removEnemies(Enemy enemy) {
-        removEnemies.add(enemy);
+    public void removeEnemy(Enemy enemy) {
+        removeEnemies.add(enemy);
     }
 
     public ArrayList<Bullet> getBullets() {
