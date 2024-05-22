@@ -11,6 +11,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import spaceinvaders.texture.ResourceManager;
 import spaceinvaders.texture.TextureType;
+import java.util.Random;
 
 public class Game {
     private Player player;
@@ -18,6 +19,8 @@ public class Game {
     private ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<Bullet> removeBullets = new ArrayList<>();
     private ArrayList<Enemy> removEnemies = new ArrayList<>();
+
+    public static final Random gamerandomizer = new Random();
 
     private InputHandler inputHandler;
 
@@ -28,7 +31,7 @@ public class Game {
 
     private void init() {
         ResourceManager loadTextures = ResourceManager.getInstance() ;
-        player = new Player(375, 400, 100, 1, loadTextures.getTexture(TextureType.player));
+        player = new Player(375, 400, 100, 0.5, loadTextures.getTexture(TextureType.player));
         spawnAllEnemys();
     }
 
@@ -43,11 +46,14 @@ public class Game {
         player.update(this);
         for (Enemy enemy : enemies) {
             enemy.update(this);
+   
         }
         if(!removEnemies.isEmpty()) {
             enemies.removeAll(removEnemies);
             removEnemies.clear();
         }
+
+        checkGameEnding();
     }
 
     // Alles was gezeichnet wird
@@ -90,7 +96,7 @@ public class Game {
     }
 
     private void checkGameEnding() {
-        if (enemies.isEmpty()) {
+        if (enemies.isEmpty() || player.isDead()) {
             SpaceInvaders.instance.running = false;
         }
     }

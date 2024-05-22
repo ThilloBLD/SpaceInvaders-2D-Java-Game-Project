@@ -3,8 +3,6 @@ package spaceinvaders.entity;
 import spaceinvaders.game.Game;
 import spaceinvaders.texture.Texture;
 
-import java.util.Random;
-
 public class Bullet extends Entity{
 
     private final int damage;
@@ -13,8 +11,7 @@ public class Bullet extends Entity{
 
     public Bullet(double x, double y, double speed, Texture texture, boolean moveUp) {
         super(x, y, speed, texture);
-        Random r = new Random();
-        damage = r.nextInt(15) + 1;
+        damage = Game.gamerandomizer.nextInt(15) + 1;
         this.moveUp = moveUp;
     }
 

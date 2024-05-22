@@ -33,6 +33,17 @@ public class Player extends LivingEntity {
 
     @Override
     public void update(Game game) {
+        for(Bullet b: game.getBullets()) {
+            if(collide(b)) {
+                b.registerHit();
+                damage(b.getDamage());
+            }
+        }
+
+        if (isDead()){
+            return;
+        }
+
         if (game.isKeyPressed(KeyEvent.VK_RIGHT)) {
             moveRight(game.getLabelWidth());
         }

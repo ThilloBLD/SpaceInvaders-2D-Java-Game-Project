@@ -7,6 +7,8 @@ public class Enemy extends LivingEntity {
 
     private final double minX;
     private final double maxX;
+    private long allowedShoot;
+    public static final long minShootDelay = 750;
 
     public Enemy(double x, double y, double health, double speed, Texture texture) {
         super(x, y, health, speed, texture);
@@ -25,8 +27,12 @@ public class Enemy extends LivingEntity {
         }
 
         if(isDead()) {
+            game.removEnemies(this);
             return;
         }
+
+        shootBullet(game);
+        
 
         double newX = getX() + getSpeed();
         if(newX >= maxX) {
@@ -41,5 +47,12 @@ public class Enemy extends LivingEntity {
 
         
         
+    }
+
+    public void shootBullet(Game game) {
+        if (System.currentTimeMillis() >= allowedShoot) {
+            game.addBullet(new Bullet(getX() + getWidth() / 2, getY() + getHeight(), 1, Game.getBulletTexture(), false));
+            allowedShoot = System.currentTimeMillis() + Game.gamerandomizer.nextLong(750) + minShootDelay;
+        }
     }
 }
