@@ -101,11 +101,6 @@ public class Game {
         }
     }
 
-    public static Texture getBulletTexture() {
-        ResourceManager loadTextures = ResourceManager.getInstance() ;
-        return loadTextures.getTexture(TextureType.bullet);
-    }
-
     //Gegner hinzufügen, entfernen, etc.
     public void spawnAllEnemys() {
         ResourceManager loadTextures = ResourceManager.getInstance();

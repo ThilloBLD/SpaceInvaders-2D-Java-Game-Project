@@ -51,7 +51,7 @@ public class Enemy extends LivingEntity {
 
     public void shootBullet(Game game) {
         if (System.currentTimeMillis() >= allowedShoot) {
-            game.addBullet(new Bullet(getX() + getWidth() / 2, getY() + getHeight(), 1, Game.getBulletTexture(), false));
+            game.addBullet(new Bullet(getX() + getWidth() / 2, getY() + getHeight(), 1, false));
             allowedShoot = System.currentTimeMillis() + Game.gamerandomizer.nextLong(750) + minShootDelay;
         }
     }
