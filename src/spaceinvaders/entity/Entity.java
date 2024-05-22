@@ -62,4 +62,7 @@ public abstract class Entity {
         return texture.getHeight();
     }
 
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 }

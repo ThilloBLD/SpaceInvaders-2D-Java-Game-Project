@@ -1,6 +1,5 @@
 package spaceinvaders.game;
 
-import org.w3c.dom.Text;
 import spaceinvaders.entity.Bullet;
 import spaceinvaders.entity.Enemy;
 import spaceinvaders.entity.Player;
@@ -29,6 +28,7 @@ public class Game {
     private void init() {
         ResourceManager loadTextures = ResourceManager.getInstance() ;
         player = new Player(375, 400, 100, 1, loadTextures.getTexture(TextureType.player));
+        spawnAllEnemys();
     }
 
     public synchronized void update() {
@@ -89,5 +89,18 @@ public class Game {
     public static Texture getBulletTexture() {
         ResourceManager loadTextures = ResourceManager.getInstance() ;
         return loadTextures.getTexture(TextureType.bullet);
+    }
+
+    //Gegner hinzufügen, entfernen, etc.
+    public void spawnAllEnemys() {
+        ResourceManager loadTextures = ResourceManager.getInstance();
+        double x = 160;
+        double y = 75;
+        Texture textureEnemy = loadTextures.getTexture(TextureType.enemy);
+        for (int i = 0; i < 4; i++) {
+            enemies.add(new Enemy(x, y, 50, 0.3, textureEnemy));
+            x+= textureEnemy.getWidth() + 30;
+            y+= textureEnemy.getHeight() + 10;
+        }
     }
 }
