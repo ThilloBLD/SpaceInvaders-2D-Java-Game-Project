@@ -2,6 +2,8 @@ package spaceinvaders.entity;
 
 import spaceinvaders.game.Game;
 import spaceinvaders.texture.Texture;
+
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Player extends LivingEntity {
@@ -53,6 +55,12 @@ public class Player extends LivingEntity {
         if (game.isKeyPressed(KeyEvent.VK_SPACE)) {
             shootBullet(game);
         }
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        super.draw(g);
+        g.drawString(getHealth() + "/" + getMaxHealth(), 10, 20);
     }
 
     private void shootBullet(Game game) {
