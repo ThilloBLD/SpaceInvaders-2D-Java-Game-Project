@@ -13,7 +13,7 @@ import spaceinvaders.texture.ResourceManager;
 import spaceinvaders.texture.TextureType;
 import java.util.Random;
 
-public class Game {
+public class GameLayer implements GameLabelLayer {
     private Player player;
     private ArrayList<Enemy> enemies = new ArrayList<>();
     private ArrayList<Bullet> bullets = new ArrayList<>();
@@ -24,7 +24,7 @@ public class Game {
 
     private InputHandler inputHandler;
 
-    public Game(InputHandler inputHandler) {
+    public GameLayer(InputHandler inputHandler) {
         this.inputHandler = inputHandler;
         init();
     }
@@ -35,6 +35,7 @@ public class Game {
         spawnAllEnemys();
     }
 
+    @Override
     public synchronized void update() {
         for (Bullet bullet : bullets) {
             bullet.update(this);
@@ -57,6 +58,7 @@ public class Game {
     }
 
     // Alles was gezeichnet wird
+    @Override
     public synchronized void draw(Graphics g) {
         for (Bullet bullet : bullets) {
             bullet.draw(g);
@@ -97,7 +99,7 @@ public class Game {
 
     private void checkGameEnding() {
         if (enemies.isEmpty() || player.isDead()) {
-            SpaceInvaders.instance.running = false;
+            SpaceInvaders.instance.frame.label.changeGameLayer(new EndLayer());
         }
     }
 

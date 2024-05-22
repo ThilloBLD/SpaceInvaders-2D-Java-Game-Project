@@ -8,7 +8,7 @@ public class GameFrame extends JFrame {
 
     private int width;
     private int height;
-    private GameLabel label;
+    public GameLabel label;
     public InputHandler inputHandler;
 
     public GameFrame(int width, int height) {

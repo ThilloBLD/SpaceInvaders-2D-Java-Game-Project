@@ -1,6 +1,6 @@
 package spaceinvaders.entity;
 
-import spaceinvaders.game.Game;
+import spaceinvaders.game.GameLayer;
 import spaceinvaders.texture.Texture;
 
 import java.awt.*;
@@ -34,7 +34,7 @@ public class Player extends LivingEntity {
     }
 
     @Override
-    public void update(Game game) {
+    public void update(GameLayer game) {
         for(Bullet b: game.getBullets()) {
             if(collide(b)) {
                 b.registerHit();
@@ -63,7 +63,7 @@ public class Player extends LivingEntity {
         g.drawString(getHealth() + "/" + getMaxHealth(), 10, 20);
     }
 
-    private void shootBullet(Game game) {
+    private void shootBullet(GameLayer game) {
         if (System.currentTimeMillis() >= allowedShoot) {
             game.addBullet(new Bullet(getX() + getWidth() / 2, getY(), 1, true));
             allowedShoot = System.currentTimeMillis() + shootDelay;

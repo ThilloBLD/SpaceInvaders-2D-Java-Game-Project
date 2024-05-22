@@ -1,6 +1,6 @@
 package spaceinvaders.entity;
 
-import spaceinvaders.game.Game;
+import spaceinvaders.game.GameLayer;
 import spaceinvaders.texture.Texture;
 
 public class Enemy extends LivingEntity {
@@ -13,7 +13,7 @@ public class Enemy extends LivingEntity {
     }
 
     @Override
-    public void update(Game game) {
+    public void update(GameLayer game) {
         
         for(Bullet b: game.getBullets()) {
             if(collide(b)) {
@@ -42,17 +42,17 @@ public class Enemy extends LivingEntity {
             newX = (game.getLabelWidth() - getWidth());
             setSpeed(- getSpeed());
         } else {
-            if (Game.gameRandomizer.nextInt(600) == 0) {
+            if (GameLayer.gameRandomizer.nextInt(600) == 0) {
                 setSpeed(- getSpeed());
             }
         }
         setX(newX);
     }
 
-    public void shootBullet(Game game) {
+    public void shootBullet(GameLayer game) {
         if (System.currentTimeMillis() >= allowedShoot) {
             game.addBullet(new Bullet(getX() + getWidth() / 2, getY() + getHeight(), 1, false));
-            allowedShoot = System.currentTimeMillis() + Game.gameRandomizer.nextLong(750) + minShootDelay;
+            allowedShoot = System.currentTimeMillis() + GameLayer.gameRandomizer.nextLong(750) + minShootDelay;
         }
     }
 }

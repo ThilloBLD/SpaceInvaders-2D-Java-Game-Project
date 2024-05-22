@@ -1,6 +1,6 @@
 package spaceinvaders.entity;
 
-import spaceinvaders.game.Game;
+import spaceinvaders.game.GameLayer;
 import spaceinvaders.texture.Texture;
 
 import java.awt.*;
@@ -52,7 +52,7 @@ public abstract class Entity {
         g.drawImage(texture.getBufferedImage(), (int)x, (int)y, texture.getWidth(), texture.getHeight(), null);
     }
 
-    public abstract void update(Game game);
+    public abstract void update(GameLayer game);
 
     public int getWidth() {
         return texture.getWidth();
