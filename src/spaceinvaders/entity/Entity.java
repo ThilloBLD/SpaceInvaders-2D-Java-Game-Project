@@ -65,4 +65,14 @@ public abstract class Entity {
     public void setSpeed(double speed) {
         this.speed = speed;
     }
+
+    public boolean collide(Entity e) {
+        
+        return (e.getX() >= getX() && e.getY() >= getY() && e.getX() <= (getX() + getWidth()) && e.getY() <= (getY() + getHeight())); 
+    }
+
+    public double getDistance(Entity flash) {
+        return Math.sqrt(Math.pow(flash.getX() -getX(), 2) + Math.pow(flash.getY() - getY(), 2));
+    }
+
 }

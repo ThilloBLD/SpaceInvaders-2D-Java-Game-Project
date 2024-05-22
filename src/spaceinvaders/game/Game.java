@@ -17,6 +17,7 @@ public class Game {
     private ArrayList<Enemy> enemies = new ArrayList<>();
     private ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<Bullet> removeBullets = new ArrayList<>();
+    private ArrayList<Enemy> removEnemies = new ArrayList<>();
 
     private InputHandler inputHandler;
 
@@ -43,6 +44,10 @@ public class Game {
         for (Enemy enemy : enemies) {
             enemy.update(this);
         }
+        if(!removEnemies.isEmpty()) {
+            enemies.removeAll(removEnemies);
+            removEnemies.clear();
+        }
     }
 
     // Alles was gezeichnet wird
@@ -68,12 +73,16 @@ public class Game {
         return SpaceInvaders.instance.frame.getLabelHeight();
     }
 
-    public void addBullet(Bullet bullet) {
+    public synchronized void addBullet(Bullet bullet) {
         bullets.add(bullet);
     }
 
     public void removeBullet(Bullet bullet) {
         removeBullets.add(bullet);
+    }
+
+    public void removEnemies(Enemy enemy) {
+        removEnemies.add(enemy);
     }
 
     public ArrayList<Bullet> getBullets() {

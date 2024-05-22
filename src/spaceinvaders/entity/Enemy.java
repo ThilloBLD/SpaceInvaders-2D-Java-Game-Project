@@ -16,6 +16,18 @@ public class Enemy extends LivingEntity {
 
     @Override
     public void update(Game game) {
+        
+        for(Bullet b: game.getBullets()) {
+            if(collide(b)) {
+                b.registerHit();
+                damage(b.getDamage());
+            }
+        }
+
+        if(isDead()) {
+            return;
+        }
+
         double newX = getX() + getSpeed();
         if(newX >= maxX) {
             newX = maxX;
@@ -26,5 +38,8 @@ public class Enemy extends LivingEntity {
             setSpeed(-getSpeed());
         }
         setX(newX);
+
+        
+        
     }
 }
