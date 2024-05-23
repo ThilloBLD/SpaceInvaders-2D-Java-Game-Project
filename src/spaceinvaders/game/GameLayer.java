@@ -99,7 +99,7 @@ public class GameLayer implements GameLabelLayer {
 
     private void checkGameEnding() {
         if (enemies.isEmpty() || player.isDead()) {
-            SpaceInvaders.instance.frame.label.changeGameLayer(new EndLayer());
+            SpaceInvaders.instance.frame.label.changeGameLayer(new EndLayer(enemies.isEmpty()));
         }
     }
 

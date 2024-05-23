@@ -109,13 +109,13 @@ public class StartLayer implements GameLabelLayer {
     @Override
     public void draw(Graphics g) {
         int i = 0;
-        int x = 250;
-        int y = 100;
+        int x = 280;
+        int y = 180;
         for (GameButton gb : allButtons) {
             gb.draw(g, x, y);
             if (i >= 1) {
                 i = 0;
-                x = 250;
+                x = 280;
                 y += 50;
             } else {
                 i++;
