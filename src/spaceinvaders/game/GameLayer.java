@@ -7,10 +7,12 @@ import spaceinvaders.handler.InputHandler;
 import spaceinvaders.main.SpaceInvaders;
 import spaceinvaders.texture.Texture;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.ArrayList;
 import spaceinvaders.texture.ResourceManager;
 import spaceinvaders.texture.TextureType;
+
+import javax.swing.ImageIcon;
 import java.util.Random;
 
 public class GameLayer implements GameLabelLayer {
@@ -19,17 +21,18 @@ public class GameLayer implements GameLabelLayer {
     private ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<Bullet> removeBullets = new ArrayList<>();
     private ArrayList<Enemy> removeEnemies = new ArrayList<>();
-
+    private ImageIcon background;
     public static final Random gameRandomizer = new Random();
 
     private InputHandler inputHandler;
 
-    public GameLayer(InputHandler inputHandler) {
+    public GameLayer(InputHandler inputHandler, int backgroundID) {
         this.inputHandler = inputHandler;
-        init();
+        init(backgroundID);
     }
 
-    private void init() {
+    private void init(int backgroundID) {
+        background = ResourceManager.getImageIconByBackgroundID(backgroundID);
         ResourceManager loadTextures = ResourceManager.getInstance() ;
         player = new Player(375, 400, 100, 0.5, loadTextures.getTexture(TextureType.player));
         spawnAllEnemys();
@@ -60,6 +63,7 @@ public class GameLayer implements GameLabelLayer {
     // Alles was gezeichnet wird
     @Override
     public synchronized void draw(Graphics g) {
+        g.drawImage(background.getImage(), 0, 0, null); // getLabelWidth(), getLabelHeight(),
         for (Bullet bullet : bullets) {
             bullet.draw(g);
         }
@@ -99,7 +103,7 @@ public class GameLayer implements GameLabelLayer {
 
     private void checkGameEnding() {
         if (enemies.isEmpty() || player.isDead()) {
-            SpaceInvaders.instance.frame.label.changeGameLayer(new EndLayer(enemies.isEmpty()));
+            SpaceInvaders.instance.frame.label.changeGameLayer(new EndLayer(enemies.isEmpty(), inputHandler));
         }
     }
 

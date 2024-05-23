@@ -32,18 +32,18 @@ public class StartLayer implements GameLabelLayer {
         allButtons.add(new GameButton(2,false, selectedButton, unselectedButton, "Calm"));
         allButtons.add(new GameButton(3,false, selectedButton, unselectedButton, "Spaceonaut"));
         allButtons.add(new GameButton(4,false, selectedButton, unselectedButton, "Space"));
+        if (allButtons.isEmpty()) {
+            startGame(-1);
+            return;
+        }
     }
 
-    private void startGame() {
-        SpaceInvaders.instance.frame.label.changeGameLayer(new GameLayer(handler));
+    private void startGame(int backgroundID) {
+        SpaceInvaders.instance.frame.label.changeGameLayer(new GameLayer(handler, backgroundID));
     }
 
     @Override
     public void update() {
-        if (allButtons.isEmpty()) {
-            startGame();
-            return;
-        }
         if (handler.isKeyDown(KeyEvent.VK_LEFT)) {
             int i = 0;
             for (GameButton gb : allButtons) {
@@ -82,27 +82,7 @@ public class StartLayer implements GameLabelLayer {
                     break;
                 }
             }
-            switch(selectedButton.getID()) {
-                case 0:
-                    System.out.println("Hintergrund 1 geladen :D");
-                    break;
-                case 1:
-                    System.out.println("Hintergrund 2 geladen :D");
-                    break;
-                case 2:
-                    System.out.println("Hintergrund 3 geladen :D");
-                    break;
-                case 3:
-                    System.out.println("Hintergrund 4 geladen :D");
-                    break;
-                case 4:
-                    System.out.println("Hintergrund 5 geladen :D");
-                    break;
-                default:
-                    System.out.println("Hier wird nix geladen :D");
-                    break;
-            }
-            startGame();
+            startGame(selectedButton.getID());
         }
     }
 
