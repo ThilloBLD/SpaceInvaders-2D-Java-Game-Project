@@ -1,18 +1,19 @@
 package spaceinvaders.entity;
 
 import spaceinvaders.game.GameLayer;
-import spaceinvaders.texture.ResourceManager;
-import spaceinvaders.texture.TextureType;
+import spaceinvaders.texture.AdvancedResourceManager;
+import spaceinvaders.texture.AdvancedTextureType;
+import spaceinvaders.texture.Theme;
 
-public class Bullet extends Entity{
+public class Bullet extends Entity {
 
     private final int damage;
     private boolean hit = false;
     private boolean moveUp;
 
-    public Bullet(double x, double y, double speed, boolean moveUp) {
+    public Bullet(double x, double y, double speed, boolean moveUp, Theme theme) {
         // schaut, ob die Textur nach oben oder nach Unten geschossen werden soll -> ? + : ist eine if abfrage 
-        super(x, y, speed, ResourceManager.getInstance().getTexture(moveUp ? TextureType.bullet : TextureType.reversedBullet));
+        super(x, y, speed, AdvancedResourceManager.getTextureForType(moveUp ? AdvancedTextureType.bullet : AdvancedTextureType.reversedbullet, theme));
         damage = GameLayer.gameRandomizer.nextInt(15) + 1;
         this.moveUp = moveUp;
     }

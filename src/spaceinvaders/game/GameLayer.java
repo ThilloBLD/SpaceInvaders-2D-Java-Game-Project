@@ -6,11 +6,13 @@ import spaceinvaders.entity.Player;
 import spaceinvaders.handler.InputHandler;
 import spaceinvaders.main.SpaceInvaders;
 import spaceinvaders.texture.Texture;
-
-import java.awt.*;
-import java.util.ArrayList;
+import spaceinvaders.texture.Theme;
+import spaceinvaders.texture.AdvancedResourceManager;
+import spaceinvaders.texture.AdvancedTextureType;
 import spaceinvaders.texture.ResourceManager;
-import spaceinvaders.texture.TextureType;
+
+import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import java.util.Random;
@@ -22,19 +24,20 @@ public class GameLayer implements GameLabelLayer {
     private ArrayList<Bullet> removeBullets = new ArrayList<>();
     private ArrayList<Enemy> removeEnemies = new ArrayList<>();
     private ImageIcon background;
+    private Theme theme;
     public static final Random gameRandomizer = new Random();
 
     private InputHandler inputHandler;
 
-    public GameLayer(InputHandler inputHandler, int backgroundID) {
+    public GameLayer(InputHandler inputHandler, int backgroundID, Theme theme) {
         this.inputHandler = inputHandler;
+        this.theme = theme;
         init(backgroundID);
     }
 
     private void init(int backgroundID) {
         background = ResourceManager.getImageIconByBackgroundID(backgroundID);
-        ResourceManager loadTextures = ResourceManager.getInstance() ;
-        player = new Player(375, 400, 100, 0.5, loadTextures.getTexture(TextureType.player));
+        player = new Player(375, 400, 100, 0.5, AdvancedResourceManager.getTextureForType(AdvancedTextureType.player, theme));
         spawnAllEnemys();
     }
 
@@ -109,14 +112,18 @@ public class GameLayer implements GameLabelLayer {
 
     //Gegner hinzufügen, entfernen, etc.
     public void spawnAllEnemys() {
-        ResourceManager loadTextures = ResourceManager.getInstance();
         double x = 160;
         double y = 75;
-        Texture textureEnemy = loadTextures.getTexture(TextureType.enemy);
+        Texture textureEnemy = AdvancedResourceManager.getTextureForType(AdvancedTextureType.enemy, theme);
         for (int i = 0; i < 4; i++) {
             enemies.add(new Enemy(x, y, 50, 0.3, textureEnemy));
             x+= textureEnemy.getWidth() + 30;
             y+= textureEnemy.getHeight() + 10;
         }
     }
+
+    public Theme getTheme() {
+        return theme;
+    }
+
 }

@@ -4,7 +4,6 @@ import spaceinvaders.gui.elements.GameButton;
 import spaceinvaders.handler.InputHandler;
 import spaceinvaders.main.SpaceInvaders;
 
-import spaceinvaders.handler.InputHandler;
 import spaceinvaders.texture.Texture;
 
 import java.awt.*;

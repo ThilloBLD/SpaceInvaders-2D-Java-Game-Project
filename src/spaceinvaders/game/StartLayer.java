@@ -39,7 +39,7 @@ public class StartLayer implements GameLabelLayer {
     }
 
     private void startGame(int backgroundID) {
-        SpaceInvaders.instance.frame.label.changeGameLayer(new GameLayer(handler, backgroundID));
+        SpaceInvaders.instance.frame.label.changeGameLayer(new ThemeLayer(handler, backgroundID));
     }
 
     @Override
@@ -82,6 +82,7 @@ public class StartLayer implements GameLabelLayer {
                     break;
                 }
             }
+            handler.keys[KeyEvent.VK_ENTER] = false;
             startGame(selectedButton.getID());
         }
     }

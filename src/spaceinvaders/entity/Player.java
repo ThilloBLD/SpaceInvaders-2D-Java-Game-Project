@@ -65,7 +65,7 @@ public class Player extends LivingEntity {
 
     private void shootBullet(GameLayer game) {
         if (System.currentTimeMillis() >= allowedShoot) {
-            game.addBullet(new Bullet(getX() + getWidth() / 2, getY(), 1, true));
+            game.addBullet(new Bullet(getX() + getWidth() / 2, getY(), 1, true, game.getTheme()));
             allowedShoot = System.currentTimeMillis() + shootDelay;
         }
     }

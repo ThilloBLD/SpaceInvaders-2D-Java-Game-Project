@@ -2,7 +2,6 @@ package spaceinvaders.gui;
 
 import javax.swing.JLabel;
 import java.awt.Graphics;
-import spaceinvaders.game.GameLayer;
 import spaceinvaders.game.GameLabelLayer;
 import spaceinvaders.game.StartLayer;
 import spaceinvaders.handler.InputHandler;

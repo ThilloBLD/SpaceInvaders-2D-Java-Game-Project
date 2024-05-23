@@ -1,6 +1,5 @@
 package spaceinvaders.gui.elements;
 
-import spaceinvaders.handler.InputHandler;
 import spaceinvaders.texture.Texture;
 
 import java.awt.Graphics;
