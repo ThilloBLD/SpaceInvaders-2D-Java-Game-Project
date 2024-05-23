@@ -8,6 +8,7 @@ public enum TextureType {
     enemy("enemy.png"),
     penis("penis.png"),
     cum("cum.png"),
+    pille("pille.png"),
     vagina("vagina.png");
 
 

@@ -33,7 +33,7 @@ public final class AdvancedResourceManager {
                     case standard:
                         return ResourceManager.getInstance().getTexture(TextureType.reversedBullet);
                     case milfhunter:
-                        return ResourceManager.getInstance().getTexture(TextureType.cum);
+                        return ResourceManager.getInstance().getTexture(TextureType.pille);
                 }
                 break;
         }
