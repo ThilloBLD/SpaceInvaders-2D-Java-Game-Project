@@ -16,15 +16,12 @@ public class ThemeLayer implements GameLabelLayer {
     private final int backgroundID;
     private ArrayList<GameButton> allButtons = new ArrayList<>();
 
-
     public ThemeLayer(InputHandler handler, int backgroundID) {
         
         this.handler = handler;
         this.backgroundID = backgroundID;
         this.init(); 
     }
-
-
 
     @Override
     public void update() {
@@ -107,5 +104,4 @@ public class ThemeLayer implements GameLabelLayer {
             return;
         }
     }
-
 }
