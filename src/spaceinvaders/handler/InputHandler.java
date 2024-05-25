@@ -9,64 +9,66 @@ import java.awt.event.WindowListener;
 
 public class InputHandler implements KeyListener, WindowListener {
 
-        public boolean[] keys = new boolean[68836 /* 68836 is the maximum value of a key code */];
+    // Ein Array, um den Status der Tasten zu verfolgen
+    public boolean[] keys = new boolean[68836]; // 68836 ist der maximale Wert eines Tastencodes
 
-        public boolean isKeyDown(int keyCode) {
-            return keys[keyCode];
+    // Überprüft, ob eine bestimmte Taste gedrückt ist
+    public boolean isKeyDown(int keyCode) {
+        return keys[keyCode];
+    }
+
+    // Reaktion auf das Drücken einer Taste
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if (keyCode >= 0 && keyCode < keys.length) {
+            keys[keyCode] = true; // Setze den Status der Taste auf gedrückt
         }
+    }
 
-        @Override
-        public void keyTyped(KeyEvent e) {
+    // Reaktion auf das Loslassen einer Taste
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if (keyCode >= 0 && keyCode < keys.length) {
+            keys[keyCode] = false; // Setze den Status der Taste auf nicht gedrückt
         }
+    }
 
-        @Override
-        public void keyPressed(KeyEvent e) {
-            int keyCode = e.getKeyCode();
-            if (keyCode >= 0 && keyCode < keys.length) {
-                keys[keyCode] = true;
-            }
-        }
+    // Reaktion auf das Tippen einer Taste (wird nicht verwendet)
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
 
-        @Override
-        public void keyReleased(KeyEvent e) {
-            int keyCode = e.getKeyCode();
-            if (keyCode >= 0 && keyCode < keys.length) {
-                keys[keyCode] = false;
-            }
-        }
-
+    // Implementierung der Methoden des WindowListener-Interfaces (nicht alle werden verwendet)
     @Override
     public void windowOpened(WindowEvent e) {
-
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-
     }
 
+    // Aktion beim Schließen des Fensters: Beende das Spiel
     @Override
     public void windowClosed(WindowEvent e) {
-        SpaceInvaders.instance.running = false;
+        SpaceInvaders.instance.running = false; // Setze die Laufvariable von SpaceInvaders auf false
     }
 
+    // Implementierungen der restlichen Methoden des WindowListener-Interfaces (nicht verwendet)
     @Override
     public void windowIconified(WindowEvent e) {
-
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-
     }
 }
