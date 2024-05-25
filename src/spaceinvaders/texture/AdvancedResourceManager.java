@@ -5,64 +5,38 @@ public final class AdvancedResourceManager {
     public static Texture getTextureForType(AdvancedTextureType type, Theme theme) {
         switch (type) {
             case player:
-                return getPlayerTexture(theme);
+                switch (theme) {
+                    case standard:
+                        return ResourceManager.getInstance().getTexture(TextureType.player);
+                    case milfhunter:
+                        return ResourceManager.getInstance().getTexture(TextureType.penis);
+                }
+                break;
             case enemy:
-                return getEnemyTexture(theme);
+                switch (theme) {
+                    case standard:
+                        return ResourceManager.getInstance().getTexture(TextureType.enemy);
+                    case milfhunter:
+                        return ResourceManager.getInstance().getTexture(TextureType.vagina);
+                }
+                break;
             case bullet:
-                return getBulletTexture(theme);
+                switch (theme) {
+                    case standard:
+                        return ResourceManager.getInstance().getTexture(TextureType.bullet);
+                    case milfhunter:
+                        return ResourceManager.getInstance().getTexture(TextureType.cum);
+                }
+                break;
             case reversedbullet:
-                return getReversedBulletTexture(theme);
-            default:
-                return getDefaultTexture();
+                switch (theme) {
+                    case standard:
+                        return ResourceManager.getInstance().getTexture(TextureType.reversedBullet);
+                    case milfhunter:
+                        return ResourceManager.getInstance().getTexture(TextureType.pille);
+                }
+                break;
         }
-    }
-
-    private static Texture getPlayerTexture(Theme theme) {
-        switch (theme) {
-            case standard:
-                return ResourceManager.getInstance().getTexture(TextureType.player);
-            case milfhunter:
-                return ResourceManager.getInstance().getTexture(TextureType.penis);
-            default:
-                return getDefaultTexture();
-        }
-    }
-
-    private static Texture getEnemyTexture(Theme theme) {
-        switch (theme) {
-            case standard:
-                return ResourceManager.getInstance().getTexture(TextureType.enemy);
-            case milfhunter:
-                return ResourceManager.getInstance().getTexture(TextureType.vagina);
-            default:
-                return getDefaultTexture();
-        }
-    }
-
-    private static Texture getBulletTexture(Theme theme) {
-        switch (theme) {
-            case standard:
-                return ResourceManager.getInstance().getTexture(TextureType.bullet);
-            case milfhunter:
-                return ResourceManager.getInstance().getTexture(TextureType.cum);
-            default:
-                return getDefaultTexture();
-        }
-    }
-
-    private static Texture getReversedBulletTexture(Theme theme) {
-        switch (theme) {
-            case standard:
-                return ResourceManager.getInstance().getTexture(TextureType.reversedBullet);
-            case milfhunter:
-                return ResourceManager.getInstance().getTexture(TextureType.pille);
-            default:
-                return getDefaultTexture();
-        }
-    }
-
-    private static Texture getDefaultTexture() {
-        // Return a default texture or handle the null case as appropriate
         return null;
     }
 }
