@@ -1,6 +1,6 @@
 package spaceinvaders.texture;
 
 public enum Theme {
-    standard,
-    milfhunter;
+    standard, // Standard-Thema
+    milfhunter; // "Milf Hunter"-Thema
 }
