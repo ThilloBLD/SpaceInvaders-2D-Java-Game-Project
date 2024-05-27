@@ -9,8 +9,10 @@ import java.awt.event.WindowListener;
 
 public class InputHandler implements KeyListener, WindowListener {
 
+    // Array, das den Status aller Tasten speichert
         public boolean[] keys = new boolean[68836 /* 68836 is the maximum value of a key code */];
 
+    // Überprüft, ob eine bestimmte Taste gedrückt ist
         public boolean isKeyDown(int keyCode) {
             return keys[keyCode];
         }
@@ -21,17 +23,19 @@ public class InputHandler implements KeyListener, WindowListener {
 
         @Override
         public void keyPressed(KeyEvent e) {
+            // Behandlung des Tastendrucks
             int keyCode = e.getKeyCode();
             if (keyCode >= 0 && keyCode < keys.length) {
-                keys[keyCode] = true;
+                keys[keyCode] = true; // Setzt den entsprechenden Eintrag im Array auf 'true', um anzuzeigen, dass die Taste gedrückt wurde
             }
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
+            // Behandlung des Loslassens der Taste
             int keyCode = e.getKeyCode();
             if (keyCode >= 0 && keyCode < keys.length) {
-                keys[keyCode] = false;
+                keys[keyCode] = false; // Setzt den entsprechenden Eintrag im Array auf 'false', um anzuzeigen, dass die Taste losgelassen wurde
             }
         }
 
@@ -47,6 +51,7 @@ public class InputHandler implements KeyListener, WindowListener {
 
     @Override
     public void windowClosed(WindowEvent e) {
+        // Schließt das Spiel, wenn das Fenster geschlossen wird
         SpaceInvaders.instance.running = false;
     }
 
