@@ -3,7 +3,6 @@ package spaceinvaders.game;
 import spaceinvaders.gui.elements.GameButton;
 import spaceinvaders.handler.InputHandler;
 import spaceinvaders.main.SpaceInvaders;
-
 import spaceinvaders.texture.Texture;
 
 import java.awt.*;
@@ -12,16 +11,21 @@ import java.util.ArrayList;
 
 public class EndLayer implements GameLabelLayer {
 
+    // Der InputHandler, um Eingaben zu verarbeiten
     private final InputHandler handler;
+    // Liste aller Schaltflächen in dieser Ebene
     private ArrayList<GameButton> allButtons = new ArrayList<>();
+    // Flag, das anzeigt, ob das Spiel gewonnen wurde
     private final boolean gameWon;
 
+    // Konstruktor, der initialisiert, ob das Spiel gewonnen wurde und den InputHandler übergibt
     public EndLayer(boolean gameWon, InputHandler handler) {
         this.gameWon = gameWon;
         this.handler = handler;
         init();
     }
 
+    // Initialisiert die Schaltflächen für die Endebene
     private void init() {
         Texture unselectedButton = new Texture(100, 40);
         unselectedButton.setColor(Color.YELLOW);
@@ -30,13 +34,14 @@ public class EndLayer implements GameLabelLayer {
         selectedButton.setColor(Color.CYAN);
         selectedButton.setRandColor(Color.BLACK);
         allButtons.add(new GameButton(0, true, selectedButton, unselectedButton, "Replay"));
-        allButtons.add(new GameButton(1,false, selectedButton, unselectedButton, "Exit"));
+        allButtons.add(new GameButton(1, false, selectedButton, unselectedButton, "Exit"));
         if (allButtons.isEmpty()) {
             SpaceInvaders.instance.running = false;
             return;
         }
     }
 
+    // Aktualisiert den Zustand der Schaltflächen basierend auf Benutzereingaben
     @Override
     public void update() {
         if (handler.isKeyDown(KeyEvent.VK_LEFT)) {
@@ -92,6 +97,7 @@ public class EndLayer implements GameLabelLayer {
         }
     }
 
+    // Zeichnet die Schaltflächen und den Endzustand des Spiels
     @Override
     public void draw(Graphics g) {
         String textSpeicher = null;
