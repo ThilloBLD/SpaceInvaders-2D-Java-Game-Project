@@ -64,7 +64,7 @@ public abstract class Entity {
         g.drawImage(texture.getBufferedImage(), (int)x, (int)y, texture.getWidth(), texture.getHeight(), null);
     }
 
-    // Abstrakte Methode zur Aktualisierung der Entität, muss von Unterklassen implementiert werden
+    // Abstrakte Methode zur Aktualisierung der Entität muss von Unterklassen implementiert werden
     public abstract void update(GameLayer game);
 
     // Getter für die Breite der Entität (basierend auf der Textur)
