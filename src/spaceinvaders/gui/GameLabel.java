@@ -17,7 +17,7 @@ public class GameLabel extends JLabel {
     }
 
     // Aktualisiert den Inhalt des Labels
-    public void update() {
+    public synchronized void update() {
         gameLayer.update(); // Aktualisiert den aktuellen Spiel-Layer
     }
 
