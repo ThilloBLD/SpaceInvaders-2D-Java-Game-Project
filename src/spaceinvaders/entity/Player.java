@@ -69,6 +69,8 @@ public class Player extends LivingEntity {
     @Override
     public void draw(Graphics g) {
         super.draw(g); // Zeichnet den Spieler
+        // Setzt die Farbe auf Weiß
+        g.setColor(Color.WHITE);
         g.drawString(getHealth() + "/" + getMaxHealth(), 10, 20); // Zeichnet die Gesundheitsanzeige
     }
 
