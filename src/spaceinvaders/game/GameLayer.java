@@ -45,7 +45,7 @@ public class GameLayer implements GameLabelLayer {
     // Initialisiert das Spiel mit einer bestimmten Hintergrund-ID
     private void init(int backgroundID) {
         background = ResourceManager.getImageIconByBackgroundID(backgroundID);
-        player = new Player(375, 400, 100, 0.5, AdvancedResourceManager.getTextureForType(AdvancedTextureType.player, theme));
+        player = new Player(375, 400, 100, 0.4, AdvancedResourceManager.getTextureForType(AdvancedTextureType.player, theme));
         spawnAllEnemys(); // Spawnt alle Gegner
     }
 
